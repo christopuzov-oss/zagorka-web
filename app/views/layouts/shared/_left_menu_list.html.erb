@@ -1,0 +1,5 @@
+<%= content_tag :li, link_to(t('.news'), articles_path) %>
+<% @left_menu.each do |item| %>
+  <%= content_tag :li, link_to(item.name, item.path) %>
+<% end %>
+<%= content_tag :li, link_to(t('.portfolio'), products_path) %>

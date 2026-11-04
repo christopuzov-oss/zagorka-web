@@ -1,0 +1,4 @@
+<% path ||= @page[:url] %>
+
+<a href="https://www.facebook.com/sharer/sharer.php?sdk=joey&amp;display=popup&amp;ref=plugin&amp;src=share_button&amp;app_id=465843588496698&amp;u=<%= URI::encode(path) %>" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=300')" class="button show-for-medium facebook" data-medium="facebook"><i class='icon-share'></i><%= t('.label')%></a>
+<a href="https://m.facebook.com/sharer.php?u=<%= path %>" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=300')" class="button show-for-small-only" data-medium="facebook"><i class='icon-share'></i><%= t('.label')%></a>

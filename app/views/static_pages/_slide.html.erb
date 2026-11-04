@@ -1,0 +1,14 @@
+<div class="slide large-12 fp-section" id="slide<%= index %>">
+    <div class="row">
+        <div class='large-6 medium-6 small-12 text-center image-wrap'>
+            <%= image_tag "brewering_process/#{index}/img-#{index}.png", id: "img#{index}" %>
+            <%= content_tag :div, '', class: "pipe pipe--#{[1,2,3,4,5,6,9,10,12,13].include?(index) ? 'v' : 'h' }", id: "pipe#{index}a"%>
+            <%= content_tag :div, '', class: "pipe pipe--#{[17].include?(index) ? 'v' : 'h' }", id: "pipe#{index}b"%>
+            <%= content_tag :div, '', class: "pipe pipe--#{[1,2,3,4,5,6,8,9,10,12,13].include?(index) ? 'v' : 'h' }", id: "pipe#{index}c"%>
+        </div>
+        <div class='large-6 small-12 text-left'>
+            <%= content_tag :h1, t(".header#{index}"), id: "header#{index}"%>
+            <%= content_tag :p, t(".text#{index}"), id: "text#{index}"%>
+        </div>
+    </div>
+</div>

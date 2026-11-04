@@ -1,0 +1,17 @@
+<% menu_items.each do |item| %>
+    <% if item.static_pages.size > 0 %>
+    <%= content_tag :li do %>
+        <%= link_to(item.name, '#') %>
+        <ul class="menu vertical nested">
+        <% item.static_pages.order(position: :asc).each_with_index do |p,i| %>
+            <% if i == 0 %>
+              <%= content_tag :li, link_to(t('.management_team'), '/kompaniyata/leaders') if item.path.match("kompaniyata") %>
+            <% end %>
+            <%= content_tag :li, link_to(p.title, p.path) %>
+        <% end %>
+        </ul>
+    <% end %>
+    <% else %>  
+    <%= content_tag :li, link_to(item.name, item.path) %>
+    <% end %>
+<% end %>

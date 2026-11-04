@@ -1,0 +1,186 @@
+* {outline:none;}
+a {
+  color: $primary-color;  
+  webkit-transition: color .3s ease-in;
+  -moz-transition: color .3s ease-in;
+  -o-transition: color .3s ease-in;
+  transition: color .3s ease-in;
+  opacity:1;
+  &:hover {
+    color: $black;  
+    //opacity: 0.8;
+  }
+}
+.strong {font-weight: bold;}
+.upper {text-transform: uppercase;}
+.inline-list li {display: inline-block;}
+.wallpaper {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; 
+}
+.small-text-center {
+  @include breakpoint(small only) {
+    text-align: center;
+  }
+}
+.font-11 {font-size:11px;}
+.font-12 {font-size:12px;}
+.font-13 {
+  font-size:13px;
+  @include breakpoint(small only) {
+    font-size:11px;
+  }
+}
+.font-14 {
+  font-size:14px;
+  @include breakpoint(small only) {
+    font-size:12px;
+  }
+}
+.font-15 {
+  font-size:15px;
+  @include breakpoint(small only) {
+    font-size:13px;
+  }
+}
+.font-16 {
+  font-size:16px;
+  @include breakpoint(small only) {
+    font-size:14px;
+  }
+}
+.font-18 {
+  font-size:18px;
+  @include breakpoint(small only) {
+    font-size:16px;
+  }
+}
+.font-20 {
+  font-size:20px;
+  @include breakpoint(medium only) {
+    font-size:18px;
+  }
+  @include breakpoint(small only) {
+    font-size:18px;
+  }
+}
+.font-21 {
+  font-size:21px;
+  @include breakpoint(small only) {
+    font-size:16px;
+  }
+}
+.font-22 {
+  font-size:22px;
+  @include breakpoint(small only) {
+    font-size:18px;
+  }
+}
+.font-24 {
+  font-size:24px;
+  @include breakpoint(medium only) {
+    font-size:20px;
+  }
+  @include breakpoint(small only) {
+    font-size:18px;
+  }
+}
+.font-26 {
+  font-size:26px;
+  @include breakpoint(small only) {
+    font-size:18px;
+  }
+}
+.font-30 {
+  font-size:30px;
+  @include breakpoint(small only) {
+    font-size:24px;
+  }
+}
+.font-32 {
+  font-size:32px;
+  @include breakpoint(small only) {
+    font-size:18px;
+  }
+}
+.font-36 {
+  font-size:36px;
+  @include breakpoint(medium only) {
+    font-size:27px;
+  }
+  @include breakpoint(small only) {
+    font-size:18px;
+  }
+}
+.font-42 {
+  font-size:42px;
+  @include breakpoint(medium only) {
+    font-size:32px;
+  }
+  @include breakpoint(small only) {
+    font-size:28px;
+  }
+}
+.font-55 {
+  font-size:55px;
+  @include breakpoint(medium only) {
+    font-size:50px;
+  }
+  @include breakpoint(small only) {
+    font-size:46px;
+  }
+}
+*[class*='font-'] {line-height: 1.25;}
+i[class*='font-'] {line-height: 1;}
+.vertical-align {
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+
+.gdpr-cookie-wrapper {
+  background-color: #eeeeee;
+  bottom: 0px;
+  box-sizing: border-box;
+  color: #000;
+  //display: block;
+  font-size: 15px;
+  left: 0px;
+  overflow: hidden;
+  padding: 10px;
+  position: fixed;
+  width: 100%; 
+  z-index: 9999;
+  a {
+    &.details {
+      color: $black;
+      text-decoration: underline;
+      margin: 0 10px;
+    }
+    &.gdpr-cookie-accept {
+      font-size: 18px;
+      right: 0;
+      bottom: 0;
+      color: $white;
+      top: 0;
+      width: 150px;
+      position: absolute;
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 42px;
+      background-color: $primary-color;
+      left: auto;
+    }
+  }
+  @include breakpoint(small only) {
+    padding: 15px 15px 55px;
+    a {
+      &.gdpr-cookie-accept {
+        top: auto;
+        width: 100%;
+      }
+    }
+
+  }
+}

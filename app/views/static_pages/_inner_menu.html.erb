@@ -1,0 +1,25 @@
+<menu class='small-12 show-for-medium' style="<%= style ||= ''%>"> 
+  <div class='row'>
+    <ul class='no-bullet flickity-brands'>
+      <% articles.each_with_index do |a, i| %>
+        <%= content_tag :li, link_to(a.title, a.path, class: "#{'active' if @page[:url].match(a.path) }") %>
+        <% if i == 1 %>
+        <%= content_tag :li, link_to(t('.management_team'), '/kompaniyata/leaders', class: "#{'active' if @page[:url].match('/kompaniyata/leaders') }") if @page[:url].match('kompaniyata') %>
+        <% end %>
+      <% end %>
+      <%= content_tag :li, link_to(t('.apply'), '/karieri/otvoreni-pozitsii', class: "#{'active' if @page[:url].match('/karieri/otvoreni-pozitsii')}") if @page[:url].match('karieri') %>
+    </ul>
+  </div>
+</menu>
+
+
+<script type="text/javascript">
+  var flky = new Flickity( '.flickity-brands', {
+    cellAlign: 'left',
+    pageDots: false,
+    resize: true,
+    prevNextButtons: false,
+    freeScroll: false,
+    contain: true
+  });
+</script>

@@ -1,0 +1,5 @@
+<%= content_for(:wide) do %>
+  <% @sliders.each do |slider| %>
+    <%= render partial: 'slider', locals: { slides: slider.slides} %>
+  <% end %>
+<% end %>

@@ -1,0 +1,16 @@
+<html>
+  <head></head>
+  <body>
+    <b>Сигнал за нередност</b> <br>
+    <b>Име:</b> <p><%= @contact_info.name %></p>
+    <b>Телефон:</b> <p><%= @contact_info.phone_number %></p>
+    <b>Email:</b> <p><%= @contact_info.email %></p>
+    <b>Съобщение:</b> <p><%= @contact_info.message %></p>
+    <b>Доказателства в подкрепа на твърденията:</b> 
+    <p>
+      <a href="<%=Rails.application.config.base_url%><%= @contact_info.file.url %>" target="_blank">
+        <%=Rails.application.config.base_url%><%= @contact_info.file.url %>
+      </a>
+    </p>
+  </body>
+</html>

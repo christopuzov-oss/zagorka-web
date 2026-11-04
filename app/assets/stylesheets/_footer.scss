@@ -1,0 +1,121 @@
+footer{
+  background-color: $primary-color;
+  padding: 30px 0 10px 0;
+  .icon-logo {
+    max-width: 150px;
+  }
+  ul {
+    margin: 40px auto !important;
+    a {color: $white}
+    &.categories-list {
+      margin: 40px auto !important;
+      li {
+        border-left:1px solid $white;
+        a {
+          text-transform: uppercase;
+          line-height: 20px;
+          padding-top: 0;
+          padding-bottom: 0;
+          font-size: 18px;
+        }
+        &:first-of-type{
+          border-left:0px solid $white;
+        }
+      }
+    }
+    &.icons-list{
+      margin: 0 0 40px auto !important;
+      position: relative;
+      li {
+        &:last-of-type{
+          padding-right: 40px;
+        }
+        a {
+          font-size: 36px;
+          padding: 0 20px;
+        }
+      }
+      &:after {
+        content: '';
+        display: block;
+        background-color: $white;
+        position: absolute;
+        height: 20px;
+        top: 10px;
+        right: -0.5px;
+        width: 1px;
+      }
+    } 
+    &.contacts-list{
+      margin: 0 0 40px auto !important;
+      padding-left: 40px;
+       li {
+        a {
+          i {
+            font-size: 24px;
+            margin-right: 10px; 
+            vertical-align: middle;
+          }
+          span {
+            font-size: 18px;
+            line-height: 24px;
+          }
+          img {
+            height: 40px;
+          }
+          &.telephone-link {
+            padding: 0;
+          }
+        }
+      }
+    }
+    &.tos-list {
+      margin: 0 auto !important;
+      li {
+        a, span {
+          text-decoration: underline;
+          color: $white;
+        }
+      }
+    }
+    @include breakpoint(small only) {
+      margin: 20px auto !important;
+      &.categories-list{
+        li {
+          border-width: 0;
+          text-align: left;
+          a {
+            line-height: 40px;
+          }
+        }
+      }
+      &.icons-list{
+        margin: 40px auto !important;
+        li {
+          width: 100%;
+          &:last-of-type{
+            padding-right: 0;
+          }
+          a {
+            line-height: 40px;
+            font-size: 32px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+          }
+        }
+      }
+      &.contacts-list {
+        background-color: #007337;
+        padding-left: 10px
+      }
+       &.tos-list {
+        li {
+          -webkit-box-flex: none !important;
+          -webkit-flex: none !important; 
+          -ms-flex: none !important;
+          flex: none !important;
+        }
+      }
+    }
+  }
+}

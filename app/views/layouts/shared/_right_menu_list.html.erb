@@ -1,0 +1,4 @@
+<% @right_menu.each do |item| %>
+  <%= content_tag :li, link_to(item.name, item.path) %>
+<% end %>
+<%= content_tag :li, link_to(t('.career'), 'https://agegate.theheinekencompany.com/bg/agegateway?oru=https%3a%2f%2fcareers.theheinekencompany.com%2fBulgaria%2f%3flocale%3dbg_BG&opco=Bulgaria&returnurl=%2f?oru%3dhttps%253a%252f%252fcareers.theheinekencompany.com%252fBulgaria%252f%253flocale%253dbg_BG%26opco%3dBulgaria', target: '_blank') %>

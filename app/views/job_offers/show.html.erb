@@ -1,0 +1,25 @@
+<%= content_for(:wide) do %> 
+  <section class='small-12'>
+    <figure class='small-12 wide-banner wallpaper' style="background-image: url(<%= asset_path('jobs-form-fasha.jpg') %>)">  
+      <figcaption class='small-12 medium-8 large-6'  data-aos="fade-up">
+        <%= content_tag :h1, t('.title'), class: 'strong font-50' %>
+      </figcaption>
+      <!--
+      <div class='fasha text-right small-12'>
+        <i class='icon-logo font-26'></i>
+      </div>  
+      -->
+    </figure>
+  </section>
+<% end %>
+<section class='small-12'>
+   <div class='small-12 medium-8 large-6 medium-offset-2 medium-offset-3 column'>
+    <div class='small-12 job-form-wrap'>
+      <div class='small-12 column'>
+        <%= content_tag :h2, t('.title'), class: 'font-24' %>
+      </div>
+      <%= render partial: 'form' %>
+    </div>
+  </div>
+</section>
+

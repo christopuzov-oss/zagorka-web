@@ -1,0 +1,32 @@
+$brand-info: #00803D;
+$black: #343434;
+$light-gray: #f8f8f8;
+$primary-color: $black;  
+$secondary-color: #00803D;
+
+
+$btn-primary-color:              $light-gray !default;
+$btn-primary-bg:                 darken($secondary-color, 10%) !default;
+$btn-primary-border:             darken($secondary-color, 5%) !default;
+
+$btn-info-color:                 $light-gray !default;
+$btn-info-bg:                    $secondary-color !default;
+$btn-info-border:                darken($secondary-color, 5%) !default;
+  
+$table-bg-accent:                $light-gray;
+
+$pagination-color:                     $primary-color !default;
+$pagination-bg:                        $light-gray !default;
+$pagination-border:                    #ddd !default;
+
+$pagination-hover-color:               $light-gray !default;
+$pagination-hover-bg:                  darken($secondary-color, 5%) !default;
+$pagination-hover-border:              #ddd !default;
+
+$pagination-active-color:              $light-gray !default;
+$pagination-active-bg:                 $secondary-color !default;
+$pagination-active-border:             $secondary-color !default;
+
+$pagination-disabled-color:            lighten($primary-color, 75%);
+$pagination-disabled-bg:               $light-gray !default;
+$pagination-disabled-border:           #ddd !default;

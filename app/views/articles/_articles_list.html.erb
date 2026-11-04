@@ -1,0 +1,17 @@
+<div class="small-12 articles-list">
+  <% articles.each do |article| %>
+    <div class='small-12 clearfix item'>
+      <div class='small-12 medium-6 float-left'>
+        <div class='small-12 wallpaper float-right' style='background-image: url(<%= article.picture_url(:l) %>)'></div>
+      </div>
+      <div class='small-12 medium-6 float-left column'>
+        <div class='small-12'>
+          <%= content_tag :time, l(article.publish_at, format: '%a, %d %B %Y'), datetime: article.publish_at.strftime("%Y-%m-%dT%H:%M"), class: 'font-12' %>
+        </div>
+        <%= content_tag :p, article.title, class: 'title' %>
+        <%= link_to t('.more'), article.path, class: 'button primary-button font-16' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%= paginate articles %>

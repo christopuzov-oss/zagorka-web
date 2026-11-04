@@ -1,0 +1,84 @@
+<% if @career.errors.any? %>
+  <div id="error_explanation", class='column small-12'>
+    <h3 class='font-18'><%= pluralize(@career.errors.count, "error") %> prohibited this contact from being saved:</h2>
+    <ul>
+    <% @career.errors.full_messages.each do |message| %>
+      <%= content_tag :li, message %>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for(@career, url: '/karieri/apply', html: {multipart: true} ) do |f| %>
+  <div class='small-12 clearfix'>
+    <div class='small-12 medium-6 column'>
+      <%= f.label :city, class: 'font-14' %>
+      <%= f.text_field :city, class: 'small-12' %>
+    </div>
+    <div class='small-12 medium-6 float-left column'>
+      <%= f.label :position, 'Избери позиция*', class: 'font-14' %>
+      <%= select_tag :position, options_for_select(JobOffer.active.collect{|offer| [offer.post]}) %>
+    </div>
+  </div>
+  <div class='small-12'>
+    <div class='small-12 medium-6 float-left column'>
+      <%= f.label :first_name, class: 'font-14' %>
+      <%= f.text_field :first_name, class: 'small-12', required: true  %>
+    </div>
+    <div class='small-12 medium-6 float-left column'>
+      <%= f.label :last_name, class: 'font-14' %>
+      <%= f.text_field :last_name, class: 'small-12', required: true  %>
+    </div>
+    <div class='small-12'>
+      <div class='small-12 medium-6 float-left column'>
+        <%= f.label :email, class: 'font-14' %>
+        <%= f.email_field :email, class: 'small-12', required: true  %>
+      </div>
+      <div class='small-12 medium-6 float-left column'>
+        <%= f.label :phone, class: 'font-14' %>
+        <%= f.text_field :phone, class: 'small-12', required: true  %>
+      </div>
+    </div>
+    <div class='small-12 clearfix'>
+      <div class='small-6 medium-4 column custom-file-input-wrap'>
+        <%= content_tag :span, t('.file_msg_1'), class: 'font-16 strong clearfix' %>
+        <%= content_tag :span, t('.file_msg_2'), class: 'font-14 ' %>
+        <input type="file" name="career[cv]" accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" class='input-file' id='input-message-file'>
+        <label for='input-message-file' id='label-message-file' class='button'>
+          <%= t('.file_label')%>
+        </label>
+      </div>
+    </div>
+    <div class='small-12 clearfix'>
+        <%= recaptcha_tags %>
+    </div>
+    <div class='small-12 clearfix'>
+      <div class='small-12 medium-6 column'>
+        <input style="margin:7px 10px 0 0;float: left;" class="float-left" id="terms" type="checkbox" value="1" name="career[terms]">
+        <label for='terms' class='float-left'>
+          <%= raw(t('.terms')) %>
+        </label>
+      </div>
+     </div>
+    <div class='small-12 clearfix'>
+      <div class='small-12 medium-6 text-left column'>
+        <%= content_tag :button, t('.send'), class: 'button primary-button' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function(event) {
+    $("#input-message-file").change(function() {
+      var val = $(this).val();      console.log(val);
+      switch(val.substring(val.lastIndexOf('.') + 1).toLowerCase()){
+        case 'doc': case 'docx': case 'png': case 'pdf':
+           $("#label-message-file span").text(val.replace(/^.*[\\\/]/, '')); break;
+        default:
+          $(this).val('');
+          alert("Not an doc"); break;
+      }
+    });
+  });
+</script>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" prefix="og: http://ogp.me/ns#">
+  <head data-hook="inside_head">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport">
+    <%= favicon_link_tag 'favicon.ico' %>
+    <%= content_tag :title, "404 | Загорка Къмпани" %>
+    <%#= content_tag :title, title %>
+    <%#== meta_data_tags %>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+  </head>
+  <body data-hook="body">
+    <div class="off-canvas-wrapper">
+      <div class="off-canvas-wrapper-inner">
+        <div class="off-canvas-content">
+          <header class='small-12'>
+            <ul class='no-bullet show-for-large'>
+              <% main_categories = Category.main_menu.to_a %>
+              <% left_menu = [main_categories.shift]%>
+              <div class='left-menu-wrapper'>
+                <li>
+                  <a href="/articles">Новини</a>
+                </li>
+                <% left_menu.each do |item| %>
+                  <li>
+                    <a href="<%= item.path %>"><%= item.name %></a>
+                  </li>
+                <% end %>
+                <li>
+                  <a href="/products">Портфолио</a>
+                </li>
+              </div>
+            </ul>
+            <div class='logo-wrap'>
+              <a href="/">
+                <%= image_tag('logo.svg', alt: 'logo', width: 145) %>
+              </a>
+            </div>
+            <ul class='no-bullet show-for-large'>
+              <% main_categories.each do |item| %>
+                <li>
+                  <a href="<%= item.path %>"><%= item.name %></a>
+                </li>
+              <% end %>
+              <li>
+                <a href="/contacts" class='btn'><i class='icon-mail'></i></a>
+                <a href="/search" class='search-button show-for-large no-active btn'><i class='icon-search'></i></a>
+              </li>
+              <li>
+                <ul class="dropdown menu" data-dropdown-menu>
+                  <li>
+                    <%#=link_to I18n.locale, '#', class: 'btn-locales' %>
+                    <a href='#' class='btn-locales'>
+                      <span><%= I18n.locale %></span>
+                    </a>
+                    <ul class="menu">
+                      <% I18n.config.available_locales.each do |locale| %>
+                        <li>
+                          <a href=<%="?locale=#{locale}"%>>
+                            <span><%= locale.to_s %></span>
+                          </a>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <div class='show-for-small-only search-button mobile-search-button no-active'>
+              <a href="/"><i class='icon-search'></i></a>
+            </div>
+            <div class='hamburger-wrap hide-for-large'>
+              <button class='hamburger hamburger--slider no-active' type="button" id='menuButton'>
+                <span class='hamburger-box'>
+                  <span class='hamburger-inner'></span>
+                </span>
+              </button>
+            </div>
+          </header>
+          <div class='small-12 search-form-wrap is-reveal-closed' id="searchForm">
+            <form class="search-form" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+              <input type="text" name="query" id="query" placeholder="Въведете ключова дума..." autofocus="autofocus" class="">
+              <input type="submit" name="commit" value="" class="icon-search" data-disable-with="">
+            </form>
+          </div>
+
+          <div id="content" class='small-12'>
+            <div class='row column'>
+              <div class='small-12 '>
+                <div class='column row'>
+                  <div class='errorpage-wrap'>
+                    <%= image_tag '404.jpg', width: 480 %>
+                    <!-- <h1>ГРЕШКА <br><span>404</span></h1> -->
+                    <%= content_tag :p, 'Търсената от вас страница не бе открита.', class: 'font-21' %>
+                  </div>
+                  <div class='button-wrap wallpaper text-center'>
+                    <a href="/" class='button primary'> Към началото </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <footer class='small-12'>
+            <div class='row'>
+              <div class='small-12 text-center'>
+                <%= image_tag "zagorka_Black&Withe_Logo_#{I18n.locale}.png", class: "icon-logo" %>
+              </div>
+              <div class='small-6 medium-12 text-center'>
+                <ul class='menu expanded categories-list'>
+                  <li>
+                    <a href="/articles">Новини</a>
+                  </li>
+                  <% left_menu.each do |item| %>
+                    <li>
+                      <a href="<%= item.path %>"><%= item.name %></a>
+                    </li>
+                  <% end %>
+                  <li>
+                    <a href="/products">Портфолио</a>
+                  </li>
+                  <% main_categories.each do |item| %>
+                  <li>
+                    <a href="<%= item.path %>"><%= item.name %></a>
+                  </li>
+                  <% end %>
+                </ul>
+              </div>
+              <div class='small-6 medium-6 text-center'>
+                <ul class='no-bullet menu align-right icons-list'>
+                  <li>
+                    <a href="<%=Rails.application.config.facebook%>" target='_blank'>
+                      <i class='icon-facebook'></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="<%=Rails.application.config.youtube%>" target='_blank'>
+                      <i class='icon-youtube'></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="<%=Rails.application.config.linkedin%>" target='_blank'>
+                      <i class='icon-linkedin'></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class='small-12 medium-6 text-left'>
+                <ul class='menu expanded contacts-list'>
+                  <li> 
+                    <a href="/contacts">
+                      <i class='icon-mail'></i>
+                      <span>Контакти</span>
+                    </a>
+                  </li>
+                  <li> 
+                    <a href="tel:080011330" class='telephone-link'>
+                      <%= image_tag 'phone-number.svg' %>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class='small-12'>
+                <ul class='menu align-center tos-list font-14'>
+                  <li>
+                    <a href="/tos/politika-za-poveritelnost">
+                      Политика за поверителност
+                    </a>
+                  </li>
+                </ul> 
+              </div>
+              <div class='small-12'>
+                <ul class='menu expanded align-center tos-list font-14'>
+                  <li>
+                    <span>© 2020 Copyright ZAGORKA SA. All rights reserved.</span>
+                  </li>
+                </ul> 
+              </div>
+            </div> 
+          </footer>
+          <% main_categories =
+            Rails.cache.fetch 'main_categories', expires_in: 30.minutes do
+              Category.main_menu.to_a
+            end %>
+          <% @left_menu =
+            Rails.cache.fetch 'left_menu', expires_in: 30.minutes do
+              [main_categories.shift]
+            end %>
+          <% @right_menu =
+            Rails.cache.fetch 'right_menu', expires_in: 30.minutes do
+              main_categories
+            end %>
+          <div id='mainMenuModal' class='is-reveal-closed'>
+            <ul class="vertical menu accordion-menu small-12 text-center" data-accordion-menu>
+              <li> 
+                <a href='/articles'> Новини </a> 
+              </li>
+              <% @left_menu.each do |item| %>
+                <li>
+                  <a href=<%=item.path%>> <%= item.name %> </a>
+                  <% if item.static_pages.size > 0 %>
+                    <ul class="menu vertical nested">
+                      <% item.static_pages.order(position: :asc).each do |p| %>
+                        <li class='font-20'>
+                          <a href='<% p.path %>'> <%= p.title %> </a>
+                        </li>
+                      <% end %>
+                    </ul>
+                  <% end %>  
+                </li>
+              <% end %>
+              <li>
+                <a href='/products'> Портфолио </a>
+              </li>
+              <% @right_menu.each do |item| %>
+                <li>
+                  <a href=<%=item.path%>> <%= item.name %> </a>
+                  <% if item.static_pages.size > 0 %>
+                    <ul class="menu vertical nested">
+                      <% item.static_pages.order(position: :asc).each do |p| %>
+                        <li>
+                          <a href=<%=p.path%>> <%=p.title%> </a>
+                        </li>
+                      <% end %>
+                    </ul>
+                  <% end %>  
+                </li>
+              <% end %>
+              <% @right_menu.each do |item| %>
+                <li>
+                  <a href=<%=item.path%>>
+                    <ul class="menu vertical nested">
+                      <% item.static_pages.order(position: :asc).each do |p| %>
+                        <li class='font-20'>
+                          <a href=<%=p.path%>> <%=p.title%> </a>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </a>
+                </li>
+              <% end %>
+              <li class='locales'>
+                <% I18n.config.available_locales.each do |locale| %>
+                  <span> 
+                    <a href=<%="?locale=#{locale}"%>> <%= locale.to_s %> </a>
+                  </span>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

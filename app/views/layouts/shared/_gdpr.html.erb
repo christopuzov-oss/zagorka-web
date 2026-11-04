@@ -1,0 +1,14 @@
+<div class="gdpr-cookie-wrapper column">
+  <%= t('.title') %>
+  <%= link_to t('.more'), 'javascript:;', class: 'gdpr-cookie-accept' %>
+  <%#= content_tag :p, raw(t('gdpr.line_2')), class: 'small-12' %>    
+</div>
+<script>
+
+$(document).ready(function() {
+  $(".gdpr-cookie-accept").click(function() {
+    $(".gdpr-cookie-wrapper").hide();
+    <%= cookies[:gdpr_cookie_consent] = 1 %>
+  });
+});
+</script>

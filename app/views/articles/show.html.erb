@@ -1,0 +1,28 @@
+<%= content_for(:wide) do %> 
+  <article class='small-12'>
+    <div class='row column'>
+      <div class='head-wrap text-center small-12'>
+        <%= content_tag :h1, @article.title %>
+        <%= content_tag :time, l(@article.publish_at, format: '%a, %d %B %Y'), datetime: @article.publish_at.strftime("%Y-%m-%dT%H:%M"), class: 'font-12' %>
+        <%= render partial: 'share_button' %>
+      </div>
+    </div>
+    <figure class='small-12 wide-banner wallpaper' style="background-image: url(<%= @article.cover_picture_url %>)">  
+    </figure>
+    <div class="row">
+      <section class='article small-12 column'>
+        <%= content_tag :div, raw(@article.content), class: 'sm-12' %>
+      </section>
+    </div>
+  </article>
+  <section class='small-12 article'>
+    <div class='row'>
+      <%= content_tag :h2, t('.more_article') %>
+    </div>
+    <div class='more-article-wrap'>
+      <div class='row'> 
+        <%= render partial: 'articles_list', locals: { articles: @articles} %>
+      </div>    
+    </div>
+  </section>
+<% end %>

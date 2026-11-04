@@ -1,0 +1,3 @@
+<% I18n.config.available_locales.each do |locale| %>
+  <%= content_tag :li, link_to(locale.to_s, "?locale=#{locale}") %>
+<% end %>

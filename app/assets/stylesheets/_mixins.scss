@@ -1,0 +1,26 @@
+@mixin translate($left, $top) {
+    left: $left;
+    top: $top;
+    position: absolute;
+    transform-origin: center;
+    -webkit-transform: translate(-$left, -50%);
+        -ms-transform: translate(-$left, -50%);
+            transform: translate(-$left, -50%);
+}
+
+@mixin profil-picture() {
+  .img-wrap {
+    position: relative;
+    padding-top: 100%;
+    overflow: hidden;
+    border-radius: 20px 0 20px 20px;
+    &:after {
+      background-color: $primary-color;
+      bottom: 0;
+      content: '';
+      height: 10px;
+      position: absolute;
+      width: 100%;
+    }
+  }
+}

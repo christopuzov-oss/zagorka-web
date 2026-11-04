@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" prefix="og: http://ogp.me/ns#"><!--<![endif]-->
+  <head data-hook="inside_head">
+    <%= render partial: 'layouts/shared/head' %>
+  </head>
+  <body data-hook="body">
+    <div class="off-canvas-wrapper">
+      <div class="off-canvas-wrapper-inner">
+        <div class="off-canvas-content">
+          <%= render partial: 'layouts/shared/header' %>
+            <div id="content" class='small-12'>
+              <%= render partial: 'layouts/shared/notice' %>
+              <%= yield :wide %>
+              <div class='row'>
+                <div class="<%= content_for?(:aside) ? 'main-content' : 'small-12' %>" data-hook>
+                  <%= yield %>
+                </div>
+                <%#= yield :aside %>
+              </div>
+            </div>
+          </div>
+          <%= render partial: 'layouts/shared/footer' %>
+          <%= render partial: 'layouts/shared/mobile_menu' %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<div id='mainMenuModal' class='is-reveal-closed'>
+  <ul class="vertical menu accordion-menu small-12 text-center" data-accordion-menu>
+    <%= content_tag :li, link_to(t('.news'), articles_path) %>
+    <%= render partial: "layouts/shared/mobile_nested_menu", locals: { menu_items: @left_menu } %>
+    
+    <%= content_tag :li, link_to(t('.portfolio'), products_path) %>
+    <%= render partial: "layouts/shared/mobile_nested_menu", locals: { menu_items: @right_menu } %>
+    <%= content_tag :li, link_to(t('.career'), 'https://agegate.theheinekencompany.com/bg/agegateway?oru=https%3a%2f%2fcareers.theheinekencompany.com%2fBulgaria%2f%3flocale%3dbg_BG&opco=Bulgaria&returnurl=%2f?oru%3dhttps%253a%252f%252fcareers.theheinekencompany.com%252fBulgaria%252f%253flocale%253dbg_BG%26opco%3dBulgaria', target: '_blank') %>
+
+    <!--
+    <li class='locales'>
+      <%# I18n.config.available_locales.each do |locale| %>
+        <%#= content_tag :span, link_to(locale.to_s, "?locale=#{locale}") %>  
+      <%# end %>
+    </li>
+    -->
+  </ul>
+</div>

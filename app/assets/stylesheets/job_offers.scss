@@ -1,0 +1,115 @@
+.jobs-wrap {
+  background-color: #f1f8f4;
+  display: block;
+  overflow: hidden;
+  padding: 80px 15px 60px;
+  .job-offer{
+    background-color: $white;
+    display: block;
+    overflow: hidden;
+    margin-bottom: 40px;
+    .wallpaper{
+      padding-top: 66%;
+    }
+    .text-wrap{
+      padding: 30px 30px 70px 30px;
+      position: relative;
+      h2{margin: 0}
+      .more {
+        position: absolute;
+        bottom: 30px;
+        left: 0;
+        line-height: 40px;
+        padding: 0 30px;
+        text-transform: uppercase;
+        span + span {
+          padding-left: 50px;
+          position: relative;
+          &:before {
+            background-color: $primary-color;
+            border-radius: 5px;
+            content: '';
+            left: 20px;
+            height: 10px;
+            position: absolute;
+            top: 15px;
+            width: 10px;
+          }
+        }
+      }
+    }
+  }
+  @include breakpoint(small only) {
+    .job-offer{
+      .text-wrap{
+        padding: 10px;
+        .more {
+          position: relative;
+          padding: 0 10px;
+          font-size: 10px;
+          left: auto;
+          bottom: auto;
+          > * {
+            float: right;
+          }
+          span + span {
+            padding-left: 30px;
+            &:before {
+              left: 15px;
+              height: 5px;
+              width: 5px;
+              top: 17.5px;
+            }
+          }
+          .button {
+            font-size: 0.7rem;
+            float: left !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.job-form-wrap {
+  padding: 100px 0;
+  h2{margin-bottom:40px;}
+  .button{width: 175px !important;} 
+  [type='checkbox'] + label {
+    line-height: 1.25;
+    margin: 0 0 20px;
+    width: calc(100% - 25px);
+  }
+  .input-file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    & + label {
+      background: #848484 0% 0% no-repeat padding-box;
+      box-shadow: 0px 3px 6px rgba(0,0,0,.3);
+      font-size: 11px;
+      color: $white;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      overflow: hidden; 
+      width:100%;
+    }
+  }
+  .custom-file-input-wrap{
+    span {line-height: 1;}
+    span + span {
+      color: #848484;
+    }
+    label {
+      margin-bottom: 20px;
+      line-height: 38px;
+      padding: 0;
+    }
+  }
+}

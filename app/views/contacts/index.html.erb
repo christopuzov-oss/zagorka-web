@@ -1,0 +1,67 @@
+<%= content_for(:wide) do %> 
+  <section class='small-12'>
+    <figure class='small-12 wide-banner wallpaper' style="background-image: url(<%= asset_path('contacts.jpg') %>)">  
+      <figcaption class='small-12 medium-8 large-6'  data-aos="fade-up">
+        <%= content_tag :h1, t('.title'), class: 'strong font-50' %>
+      </figcaption>
+      <!--
+      <div class='fasha text-right small-12'>
+        <i class='icon-logo font-26'></i>
+      </div>  
+      -->
+    </figure>
+  </section>
+<% end %>
+
+<div class='small-12 contact-form-wrap'>
+  <div class='small-12 medium-4 column font-18'>
+      <%= content_tag :p, raw(t('.address1'))%>
+      <%= content_tag :p, raw(t('.address2'))%>
+    <%= image_tag 'phone-number-green.svg' %>
+  </div>
+  <div class='small-12 medium-8 column'>
+    <%= form_for(@contact) do |f| %>
+
+      <% if @contact.errors.any? %>
+        <div id="error_explanation", class='column small-12'>
+          <h3 class='font-18'><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+          <ul>
+          <% @contact.errors.full_messages.each do |message| %>
+            <%= content_tag :li, message, class: 'font-14' %>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class='small-12 clearfix'>
+        <div class='small-12 medium-6 column'>
+          <%= f.label :about,  class: 'font-14' %>
+          <%= f.text_field :about, class: 'small-12' %>
+        </div>
+      </div>
+      <div class='small-12'>
+        <div class='small-12 medium-6 float-left column'>
+          <%= f.label :name, class: 'font-14' %>
+          <%= f.text_field :name, class: 'small-12' %>
+        </div>
+        <div class='small-12 medium-6 float-left column'>
+          <%= f.label :email, class: 'font-14' %>
+          <%= f.email_field :email, class: 'small-12' %>
+        </div>
+        <div class='small-12'>
+          <div class='small-12 column'>
+            <%= f.label :message, class: 'font-14' %>
+            <%= f.text_area :message, rows: 5, class: 'small-12' %>
+          </div>
+        </div>
+        <div class='small-12 column'>
+          <%= recaptcha_tags %>
+        </div>
+        <div class='small-12 text-right column'>
+          <%= content_tag :button, t('.send'), class: 'button primary-button small-12 medium-6 large-3'%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&amp;render=explicit" async="" defer=""></script>

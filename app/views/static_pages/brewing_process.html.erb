@@ -1,0 +1,127 @@
+<%= content_for(:wide) do %> 
+  <%= render partial: 'inner_menu', locals: {articles: @articles, style: "position:absolute;top:111px;z-index:999999999;" }%>
+<% end %>
+
+<section class='article small-12' id="screen">
+	<% (1..13).to_a.each do |i| %>
+		  <%= render partial: 'slide', locals: { index: i } %>
+	<% end %>
+
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+<script src="fullpage.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.9/fullpage.css" type="text/css">
+
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  //var mq = window.matchMedia( "(min-width: 39.9375em)" );
+  //if (mq.matches) {
+    // window width is at least 500px
+    $('#screen').fullpage({
+		menu: 'menu',
+      	navigation: false,
+      	scrollBar: false,
+		observer: false,
+		paddingTop: '0',
+		verticalCentered: true,
+		responsiveSlides: true,
+		parallax: true,
+		afterLoad: function(anchorLink, index) {
+			startSlide(index)
+		},
+		afterSlideLoad: function(section, origin, destination, direction, trigger){
+        console.log('🚀 ~ file: brewing_process.html.erb ~ line 37 ~ document.addEventListener ~ origin', origin)
+			
+		},
+		onLeave: function(index, destination, direction, trigger){
+			hideSlide(index);
+		},
+    });
+  //}
+	
+	let slideIndex = 1;
+	//startSlide(slideIndex)
+	//document.addEventListener('mousewheel', throttle(scrollDirection, 500));
+
+	function scrollDirection(e) {
+		
+		disableScrolling();
+		//e.preventDefault();
+		let currentSlide = slideIndex;
+
+		if(e.wheelDeltaY > 0 ) {
+			slideIndex = slideIndex > 1 ? --slideIndex : 1
+		} else {
+			slideIndex = slideIndex < 13 ? ++slideIndex : 13
+		}
+      
+		if (currentSlide != slideIndex ) {
+			hideSlide(currentSlide);
+			startSlide(slideIndex);
+		} else {
+			enableScrolling();
+		}
+
+		
+		e.stopImmediatePropagation();
+		
+	};
+
+	function throttle(func, interval) {
+		let lastCall = 0;
+		return function() {
+			const now = Date.now();
+			if (lastCall + interval < now) {
+				lastCall = now;
+				return func.apply(this, arguments);
+			}
+		};
+	}
+
+	function startSlide(i) {
+		const ease = Power0.easeNone;
+		var delay = 0;
+		TweenMax.to(`#slide${i}`, 1, {opacity:1, ease, delay});
+		TweenMax.to(`#img${i}`, 1, {opacity:1, ease, delay});
+		TweenMax.from(`#img${i}`, 1, {y: 150, ease, delay});
+		TweenMax.to(`#header${i}`, 1, {opacity:1, ease, delay});
+		TweenMax.from(`#header${i}`, 1, {y: 50, ease, delay});
+		delay+= 0.5;
+		TweenMax.to(`#text${i}`, 1, {opacity:1, ease, delay});
+		delay+= 1;
+		const propsPipeA = [1,2,3,4,5,6,9,10,12,13].includes(i) ? {height: 0} : {width: 0};
+		const propsPipeB = [17].includes(i) ? {height: 0} : {width: 0};
+		const propsPipeC = [1,2,3,4,5,6,8, 9,10,12,13].includes(i) ? {height: 0} : {width: 0};
+		TweenMax.to(`#pipe${i}a`, 0, {opacity:1, ease, delay});
+		TweenMax.from(`#pipe${i}a`, 0.6, { ...propsPipeA, ease, delay});
+		delay+= 0.6;
+		TweenMax.to(`#pipe${i}b`, 0, {opacity:1, ease, delay});
+		TweenMax.from(`#pipe${i}b`, 0.3, {...propsPipeB, ease, delay});
+		delay+= 0.3;
+		TweenMax.to(`#pipe${i}c`, 0, {opacity:1, ease, delay});
+		TweenMax.from(`#pipe${i}c`, 0.6, { ...propsPipeC, ease, delay});
+	}
+
+	function hideSlide(i) {
+		TweenMax.to([`#slide${i}`, `#img${i}`,`#header${i}`,`#text${i}`], 0, {opacity:0, delay: 0});
+	}
+
+	function disableScrolling(){
+    var x=window.scrollX;
+    var y=window.scrollY;
+    window.onscroll=function(){window.scrollTo(x, y);};
+	}
+
+	function enableScrolling(){
+			window.onscroll=function(){};
+	}
+
+});
+
+</script>

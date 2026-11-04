@@ -1,0 +1,19 @@
+<div class='search-list small-12'>
+  <div class='small-12 column'>
+    <div class='small-12 medium-6 large-4 medium-push-3 large-push-4'>
+      <%= render partial: 'layouts/shared/search_form' %>
+    </div>
+  </div>
+  <div class='small-12 medium-6 large-6 medium-push-3 large-push-3'>
+    <% @results.each do |article| %>
+      <div class='small-12 column search-item'>
+        <div class='float-left column summary-wrap'>
+          <%= content_tag :h2, article.title, class: 'small-12 name' %>
+          <%= content_tag :div, raw(article.search_summary) %>
+          <%= link_to "home#{article.path}", article.path, class: 'font-12'%>
+        </div>
+      </div>
+    <% end %>
+    <%= paginate @results %>
+  </div>  
+</div>

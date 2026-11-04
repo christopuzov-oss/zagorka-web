@@ -1,0 +1,154 @@
+.products-list {
+  padding-top: 80px;
+  .product {
+    padding: 0 2px;
+    margin-bottom: 40px;
+    .title-wrap {
+      border-bottom: 1px solid $primary-color;
+      color: $primary-color;
+      font-size: 22px;
+      font-family: 'Heineken Bold';
+      letter-spacing: 0.4px;
+      line-height: 1.2;
+      position: relative;
+      text-align: center;
+      margin-bottom: 15px;
+      padding: 10px 20px;
+      a {
+        position: absolute;
+        right: 0;
+      }
+    }
+    .desc-wrap {
+      font-size: 20px;
+      line-height: 1.25;
+    }
+  }
+}
+
+.product-page {
+  padding: 80px 0;
+  overflow:hidden;
+  h1 {
+    line-height:1.1;
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+  .text-wrap {
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+  .buttons-wrap {
+    line-height: 36px;
+    margin: 0 auto;
+    overflow:hidden;
+    a {
+      vertical-align: middle;
+      color:$black;
+      display: inline-block;
+      line-height: 36px;
+      margin-right: 40px;
+    }
+    .button {
+      color:$white;
+      float:right;
+      line-height: 1.25;
+      margin-left: 10px;
+      margin-right: 0;
+    }
+  }
+  .prev-next {
+    margin-top:60px;
+    display:inline-block;
+    overflow: hidden;
+    .product-image-wrap {
+      width: 140px;
+      height:140px;
+      padding: 0;
+      @include breakpoint(small only) {
+        width: calc(50vw - 50px);
+        height: calc(50vw - 50px);
+      }
+    }
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  @include breakpoint(small only) {
+    .buttons-wrap {
+      .button {
+        float:left;
+        margin-left: 0;
+        margin-right: 10px;
+      }
+    }
+  }
+  .prev-next {
+    a, span {
+      color: $black;
+      line-height: 30px;
+      vertical-align: middle;
+      margin: 0 20px;
+      @include breakpoint(small only) {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.product-image-wrap {
+  background-color: rgba(0,128,61, .15);
+  background-position: center;
+  background-size: 75%;
+  background-repeat: no-repeat;
+  border-radius: 21px;
+  overflow: hidden;
+  position: relative;
+  a {    
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    margin: 0 !important;
+    padding-top: 90%;
+  }
+  img {
+    position: absolute;
+    max-height: 80%;
+    height: 100%;
+    @include translate(50%, 50%);
+  }
+}
+
+.accordion-title {
+  border-radius: 7px;
+  border-bottom: 1px solid #C8C8C8;
+  margin-bottom: -4px;
+  background: #f8f8f8;
+  &:before {
+    font-size: 24px;
+    font-family: 'icomoon';
+    left: 1rem;
+    right: auto;
+    content: '\e908';
+    color: #8E8E8E;
+    line-height: 0;
+    margin-top: 0;
+  }
+}
+.is-active > .accordion-title::before {
+  content: '\e90b';
+}
+
+.accordion-content {
+  margin-top: -5px;
+  border-top: 0;
+  border-bottom: 0;
+  p {margin-bottom: 0;}
+}
+
+:last-child:not(.is-active) > .accordion-title {
+  border-radius: 7px;
+}

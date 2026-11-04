@@ -1,0 +1,114 @@
+<%= content_for(:wide) do %> 
+  <section class='small-12'>
+    <figure class='small-12 wide-banner wallpaper' style="background-image: url(<%= asset_path('contacts.jpg') %>)">  
+      <figcaption class='small-12 medium-8 large-6'  data-aos="fade-up">
+        <%= content_tag :h1, t('.title'), class: 'strong font-50' %>
+      </figcaption>
+      <!--
+      <div class='fasha text-right small-12'>
+        <i class='icon-logo font-26'></i>
+      </div>  
+      -->
+    </figure>
+  </section>
+<% end %>
+
+<div class='row align-center contact-form-wrap'>
+  <div class='small-12 medium-8 column'>
+		<div class='small-12 column'>
+			В съответствие със своите законови задължения „ЗАГОРКА“ АД поддържа вътрешен канал за подаване на сигнали за нередности. Може да използвате този канал и формата по-долу, за да подадете сигнал във връзка с извършени престъпления, правонарушения и/ или заплаха или вреда за обществения интерес, които са Ви станали известни във връзка с работни и/ или договорни отношения, които сте имали със „ЗАГОРКА“ АД.
+			Сигнал за нередност може да бъде подаден и на имейл <a href="mailto:signals.bulgaria@heineken.com">signals.bulgaria@heineken.com</a> или на телефон <a href="tel:35942939100" class="telephone-link">+35942939100</a>. (разговорите се записват). 
+			<br>
+			<br>
+			<span class="strong">
+				В съответствие със Закона за защита на лицата, подаващи сигнали или публично оповестяващи информация, не подлежат на разследване анонимни сигнали и сигнали, отнасящи се до нарушения, извършени преди повече от две години.
+			</span>
+			<br>
+			<br>
+			<br>
+		</div>
+    <%= form_for(@signal) do |f| %>
+
+      <% if @signal.errors.any? %>
+        <div id="error_explanation", class='column small-12 error'>
+          <!--
+          <h3 class='font-18'><%= pluralize(@signal.errors.count, "error") %> prohibited this contact from being saved:</h3>
+          -->
+          <ul>
+          <% @signal.errors.full_messages.each do |message| %>
+            <%= content_tag :li, message, class: 'font-14 error' %>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class='small-12'>
+        <div class='small-12 medium-6 float-left column'>
+          <%= f.label :name, class: 'font-14' %>
+          <%= f.text_field :name, class: 'small-12' %>
+        </div>
+				<div class='small-12 medium-6 float-left column'>
+          <%= f.label :address, class: 'font-14' %>
+          <%= f.text_field :address, class: 'small-12' %>
+        </div>
+				<div class='small-12 medium-6 float-left column'>
+          <%= f.label :phone_number, class: 'font-14' %>
+          <%= f.phone_field :phone_number, class: 'small-12' %>
+        </div>
+        <div class='small-12 medium-6 float-left column'>
+          <%= f.label :email, class: 'font-14' %>
+          <%= f.email_field :email, class: 'small-12' %>
+        </div>
+        <div class='small-12'>
+          <div class='small-12 column'>
+            <%= f.label :message, class: 'font-14' %>
+            <%= f.text_area :message, rows: 5, class: 'small-12' %>
+            <div class="details">
+              *Моля, опишете подробно в какво се състои твърдяното нарушение, като посочите
+              следната информация, ако такава Ви е известна - имената на лицето, срещу което се
+              подава сигналът и неговата месторабота, конкретни данни за нарушение или за реална
+              опасност такова да бъде извършено, място и период на извършване на нарушението,
+              описание на деянието или обстановката и други обстоятелства.
+            </div>
+          </div>
+        </div>
+				<div class='small-12'>
+          <div class='small-12 column'>
+            <%= f.label :file, class: 'font-14' %>
+            <label for="images" class="drop-container">
+              <span class="drop-title">Кликнете, за да прикачите файл.<br>
+              Максимален размер 10MB в следните формати: .doc, .docx, .pdf, .jpeg, .gif <br>
+                <span id="fileNameLabel"></span>
+              </span>
+              <%= f.file_field :file, rows: 5, class: 'small-12', id: 'images', onchange: 'readURL(this);' %>
+            </label>
+            <div class="details">
+              Лицата, които съзнателно подават сигнали, съдържащи невярна и/или заблуждаваща
+              информация, носят административна отговорност съгласно чл. 45 Закона за защита на
+              лицата, подаващи сигнали или публично оповестяващи информация за нарушения и могат
+              да бъдат подведени под наказателна отговорност за набеждаване съгласно чл. 286 от
+              Наказателния кодекс!
+            </div>
+            <%#= f.label :message, class: 'font-14' %>
+          </div>
+        </div>
+        <div class='small-12'>
+         <div class='small-12 column tos' style='display'> 
+            <%= f.check_box :tos,  required: true %>
+            <%= f.label :tos, class: 'font-12' do %>
+              Запознах се с 
+              <%= link_to("Уведомлението за поверителност относно обработването на лични данни на лицата, подаващи сигнали за нарушения", "/Zagorka-Whistleblowing-PP_Whistleblowers.pdf", target: "_blank") %>
+            <% end %>
+          </div>
+        </div>
+        <div class='small-12 column'>
+          <%= recaptcha_tags %>
+        </div>
+        <div class='small-12 text-right column'>
+          <%= content_tag :button, t('.send'), class: 'button primary-button small-12 medium-6 large-3'%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&amp;render=explicit" async="" defer=""></script>

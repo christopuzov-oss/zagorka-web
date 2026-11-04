@@ -1,0 +1,12 @@
+<%search_url = "#{Rails.application.config.base_url}/search"%>
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription
+xmlns="http://a9.com/-/spec/opensearch/1.1/"
+xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName><%=Rails.application.config.site_name%></ShortName>
+  <Description><%="#{Rails.application.config.site_name} search"%></Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image width="16" height="16"><%=Rails.application.config.base_url+image_path('favicon.ico')%></Image>
+  <Url type="text/html" template="<%=search_url%>?query={searchTerms}"/>
+  <moz:SearchForm><%=search_url%></moz:SearchForm>
+</OpenSearchDescription>

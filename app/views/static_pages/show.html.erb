@@ -1,0 +1,20 @@
+<%= content_for(:wide) do %> 
+  <section class='small-12 static'>
+    <figure class='small-12 wide-banner wallpaper' style="background-image: url(<%= mobile? ? @article.mobile_picture_url : @article.picture_url %>)">  
+      <figcaption class='small-12 medium-8 large-6'  data-aos="fade-up">
+        <%= content_tag :h1, @article.title, class: 'strong font-50' %>
+      </figcaption>
+      <!--
+      <div class='fasha text-right small-12'>
+        <%= content_tag :i, "", class: 'icon-logo font-26' %>
+      </div>  
+      -->
+    </figure>
+    <%= link_to "", @article.banner_url, class: "banner-url" if @article.banner_url %>
+  </section>
+  <%= render partial: 'inner_menu', locals: {articles: @articles}%>
+<% end %>
+
+<section class='article small-12'>
+  <%= content_tag :div, raw(@article.content) %>
+</section>

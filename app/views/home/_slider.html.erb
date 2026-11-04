@@ -1,0 +1,33 @@
+<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+  <div class="orbit-wrapper">
+    <ul class="orbit-container">
+      <% slides.each do |slide| %>
+        <li class="is-active orbit-slide">
+          <figure class="orbit-figure">
+             <div style="background-image:url('<%= slide.picture_url %>')" class='wallpaper bullet float-left'></div>
+            <figcaption class="orbit-caption row">
+              <div class="small-12 medium-6 large-6 float-right <%= 'text-right medium-push-6' if slide.right_align %>">
+                <%= content_tag :p, slide.headline, class: 'main' %>
+                <%= content_tag :p, slide.summary, class: 'font-18' %>
+                <%= link_to slide.label, slide.url, class: 'button primary-button font-16' %>
+              </div>
+            </figcaption>
+          </figure>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <nav class="orbit-bullets">
+    <% slides.each_with_index do |slide,i| %>
+      <button class="<%= 'brand-bullets' unless slide.bullet.zero? %> <%= 'is-active' if i.zero? %>" data-slide="<%= i%>">
+        <% unless slide.bullet.zero? %>
+          <% if slide.bullet == 1 %>
+            <div style="background-image:url('<%= asset_path("home/logos/zagorka.png") %>')" class='wallpaper bullet float-left'></div>
+          <% else %>
+            <div style="background-image:url('<%= asset_path("home/logos/#{Slide.bullets.key(slide.bullet)}.svg") %>')" class='wallpaper bullet float-left'></div>
+          <% end %>
+        <% end %>
+      </button>
+    <% end %>
+  </nav>
+</div>

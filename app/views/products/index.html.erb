@@ -1,0 +1,28 @@
+<%= content_for(:wide) do %> 
+  <section class='small-12'>
+    <figure class='small-12 wide-banner wallpaper' style="background-image: url(<%= asset_path('products-fasha.jpg') %>)">  
+      <figcaption class='small-12 medium-8 large-6'  data-aos="fade-up">
+        <%= content_tag :h1, t('.title'), class: 'strong font-50' %>
+      </figcaption>
+    </figure>
+  </section>
+<% end %>
+
+<div class='small-12 medium-12 large-offset-1 large-10 products-list' data-equalizer>
+  <%@products.to_a.each do |product| %>
+    <div class='small-12 medium-4 column float-left'  data-equalizer-watch>
+      <div class='small-12 product'>
+        <div class='product-image-wrap' style='background-image: url(<%= product.logo_url('original') %>)'>
+          <%= link_to product.path do %>
+            <%= image_tag product.picture_url %>
+          <% end %>
+        </div>
+        <div class='small-12 text-center title-wrap'>
+          <%= content_tag :span, product.name, class: 'upper' %>
+          <%= link_to content_tag(:i, '', class: 'icon-circle-right'), product.path %>
+        </div>
+        <%= content_tag :div, product.summary, class: 'small-12 text-center font-20' %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,30 @@
+<%= content_for(:wide) do %> 
+  <section class='small-12'>
+    <figure class='small-12 wide-banner wallpaper' 
+            style="background-image: url(<%= asset_path(mobile? ? 'team-fasha-mobile.jpg' : 'team-fasha.jpg') %>);">  
+      <figcaption class='small-12 medium-8 large-6'  data-aos="fade-up">
+        <%= content_tag :h1, t('.title'), class: 'strong font-50' %>
+      </figcaption>
+      <!--
+      <div class='fasha text-right small-12'>
+        <i class='icon-logo font-26'></i>
+      </div>  
+      -->
+    </figure>
+  </section>
+  <%= render partial: '/static_pages/inner_menu', locals: {articles: @articles} %>
+<% end %>
+
+<section class='article small-12 '>
+  <div class='team-list small-12 medium-10 medium-offset-1 '>
+    <% @leaders.each do |leader| %>
+    <div class='small-12 medium-4 teammate'>
+      <div class='small-12 img-wrap wallpaper' style='background-image: url(<%= leader.picture_url(:s) %>)'>
+        <%= link_to '', leader.path %>
+      </div>
+      <%= content_tag(:h2, link_to(leader.name, leader.path), class: 'small-12 name font-20') %>
+      <%= content_tag :span, leader.post, class: 'small-12 position' %>
+    </div>
+    <% end %>  
+  </div>
+</section>

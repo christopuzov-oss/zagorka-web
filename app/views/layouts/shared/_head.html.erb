@@ -1,0 +1,41 @@
+<%= render partial: 'layouts/shared/scripts' %>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport">
+<%#= favicon_link_tag 'favicon.ico' %>
+
+<%= favicon_link_tag asset_url('app_icons/apple-icon-32x32.png'),  rel: 'apple-touch-icon', type: 'image/png', sizes: '32x32'%>
+<%= favicon_link_tag asset_url('app_icons/apple-icon-57x57.png'),  rel: 'apple-touch-icon', type: 'image/png', sizes: '57x57'%>
+<%= favicon_link_tag asset_url('app_icons/apple-icon-72x72.png'),  rel: 'apple-touch-icon', type: 'image/png', sizes: '72x72' %>
+<%= favicon_link_tag asset_url('app_icons/apple-icon-114x114.png'), rel: 'apple-touch-icon', type: 'image/png', sizes: '114x114' %>
+<%= favicon_link_tag asset_url('app_icons/apple-icon-144x144.png'), rel: 'apple-touch-icon', type: 'image/png', sizes: '144x144' %>
+<%= favicon_link_tag asset_url('app_icons/android-icon-36x36.png'),  rel: 'icon', type: 'image/png', sizes: '36x36' %>
+<%= favicon_link_tag asset_url('app_icons/android-icon-72x72.png'),  rel: 'icon', type: 'image/png', sizes: '72x72' %>
+<%= favicon_link_tag asset_url('app_icons/android-icon-96x96.png'),  rel: 'icon', type: 'image/png', sizes: '96x96' %>
+<%= favicon_link_tag asset_url('app_icons/android-icon-192x192.png'), rel: 'icon', type: 'image/png', sizes: '192x192' %>
+
+
+<link rel="canonical" href="<%= @page[:url]%>"/>
+
+<%= content_tag :title, fulltitle %>
+<%== meta_data_tags %>
+
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="<%= asset_url('app_icons/ms-icon-144x144.png') %>">
+<meta name="theme-color" content="#ffffff">
+<meta name="author" content="elevatecompany.eu" />
+
+<script type="application/ld+json">
+  {"@context" : "http://schema.org","@type" : "Organization","name" : "digitalcamp","url" : "<%#= @page[:site_name] %>",}
+</script>
+
+
+<link rel="canonical" href="<%#= @page[:url]%>"/>
+
+<%#= content_tag :title, @page[:title] %> 
+<%#= content_tag :title, title %>
+<%#== meta_data_tags %>
+
+<%= stylesheet_link_tag    "application" %>
+<%= javascript_include_tag "application" %>
+<%= csrf_meta_tags %>

@@ -1,0 +1,161 @@
+.articles-list{
+  padding-top:60px;
+  .item {
+    margin-bottom: 40px;
+    .wallpaper {
+      background-image: url(/assets/articles/a1-4b9cbe8….jpg);
+      padding-top: 50%;
+      display: block;
+      overflow: hidden;
+      width: 80%;
+      border-radius: 20px 0px 0px 0px;
+    }
+    .column {
+      padding: 0 80px;
+      > * {
+        margin-bottom: 20px;
+      }
+    }
+    time {
+      color: #B7B7B7;
+      font-size: 20px;
+    }
+    p.title{
+      line-height: 1;
+      font-size: 38px;
+      font-family: 'Heineken Bold';
+      margin-top: 20px;
+    }
+    a {
+      margin-top: 20px;
+      width: 175px;
+    }
+  }
+  @include breakpoint(small only) {
+    .item {
+      .wallpaper {
+        width: 100%;
+        padding-top: 90%;
+        margin-bottom: 10px;
+      }
+      .column {
+        padding: 0 36px;
+      }
+      time {
+        font-size: 12px;
+        float: right;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+      p.title{
+        font-size: 25px !important;
+      }
+    }
+  }  
+}
+.more-article-wrap{
+  background-color: #EFEFEF; 
+  padding: 40px 0;
+  .articles-list{
+    .item {
+
+    }
+  }
+}
+
+.filter-wrap{
+  overflow: hidden;
+  display: block;
+  padding: 50px 0;
+  select{
+    float: right;
+    max-width: calc(30% - 10px);
+    margin-right: 10px;
+    width: 120px;
+    &#media{
+      width: 170px;
+    }
+    
+  }
+}
+
+article {
+  .right, .left, .r-block, .l-block  {
+    max-width: 40%;
+    margin-bottom: 5px;
+    width: 40%;
+  }
+  .right, .r-block {
+    float: right;
+    //margin-right: -10%;
+    margin-left: 30px;
+  }
+  .left, .l-block {
+    float: left;
+    //margin-left: -10%;
+    margin-right: 30px;
+  }
+  .r-block, .left, .right, .l-block {
+    background-color: #eeeeee;
+    font-size: 14px;
+    padding: 1px;
+    @include breakpoint(small only) {
+      max-width: 100%;
+      margin: 0 0 1rem 0 !important;
+      width: 100%;
+    }
+  }
+  .head-wrap {
+    padding-top: 40px; 
+    padding-bottom: 40px; 
+    position: relative;
+    text-align: center;
+    h1 {
+      font-size: 38px;
+      font-family: 'Heineken Bold';
+      display: block;
+      padding: 20px 0; 
+    }
+    time {
+      color: #B7B7B7;
+      font-size: 20px;
+    }
+    .button {
+      background-color: #8F8F8F;
+      box-shadow: 0px 3px 6px rgba(0,0,0,.15);
+      padding: 0 30px;
+      line-height: 45px;
+      float: right;
+      i {
+        margin-right: 15px;
+      }
+    }
+  }
+  @include breakpoint(small only) {
+    .head-wrap {
+      time {
+        font-size: 12px;
+        float: right;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+      .button {
+        clear: both;
+        float: none;
+        margin: auto;
+        display: table;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+.static {
+  position: relative;
+  .banner-url {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    width: 100%;
+  }
+}

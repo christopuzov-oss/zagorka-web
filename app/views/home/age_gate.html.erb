@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" prefix="og: http://ogp.me/ns#"><!--<![endif]-->
+  <head data-hook="inside_head">
+    <%= render partial: 'layouts/shared/head' %>
+  </head>
+  <body data-hook="body">
+    <div class="small-12">
+      <section class='age-gate small-12'>
+        <ul class='locales-list no-bullet'>
+          <% I18n.config.available_locales.each do |locale| %>
+            <%= content_tag :li, link_to(locale.to_s, "?locale=#{locale}"), class: "font-14 #{'button hollow' if I18n.locale == locale}" %>
+          <% end %>
+        </ul>
+        <div class='row small-12'>
+          <div class='small-12 large-offset-2 large-8 xlarge-offset-3 xlarge-6 column'>
+            <div class='text-center'>
+              <div class='small-12'>
+                <%= image_tag 'logo.svg'%>
+              </div>
+              <%= content_tag :h1, t('.title') %>
+              <%= content_tag :label, t('.label') %>
+              <form action="?" method="post" data-error="<%= t('.error_msg')%>" id="verify">
+                <div class="input-wrapper text-center">
+                  <div class='small-12 medium-9 float-left'>
+                    <div class='small-4 float-left column'>
+                      <input type="text" name="day" id="verDay" placeholder="<%= t('.placeholder_day')%>" size="2" maxlength="2">
+                    </div>
+                    <div class='small-4 float-left column'>
+                      <input type="text" name="month" id="verMonth" placeholder="<%= t('.placeholder_month')%>" size="2" maxlength="2">
+                    </div>
+                    <div class='small-4 float-left column'>
+                      <input type="text" name="year" id="verYear" placeholder="<%= t('.placeholder_year')%>" size="4" maxlength="4">
+                    </div>
+                  </div>
+                  <div class='small-12 medium-3 float-left'>
+                    <div class='small-12 float-left column'>
+                      <input type="submit" value="<%= t('.continue')%>" class="button last">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

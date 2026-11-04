@@ -1,0 +1,34 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require flickity
+ *= require fullpage
+ *= require_self  
+ */
+
+@import "foundation_and_overrides";
+@import "fonts/font_faces";
+@import "mixins";
+@import "addition";
+@import "theme";
+@import "header";
+@import "footer";
+@import "home";
+@import "orbit";
+@import "contacts";
+@import "products";
+@import "categories";
+@import "articles";
+@import "search";
+@import "error_pages";
+@import "job_offers";
+@import "brewing_process"
