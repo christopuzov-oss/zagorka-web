@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Вход – zagorkacompany.bg</title>
+  <%= csrf_meta_tags %>
+  <style>
+    body { font-family: -apple-system, Helvetica, Arial, sans-serif; background: #f4f4f4; margin: 0; }
+    .box { max-width: 340px; margin: 12vh auto; background: #fff; padding: 32px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+    h1 { font-size: 20px; margin: 0 0 20px; }
+    label { display: block; font-size: 14px; margin: 12px 0 4px; }
+    input[type=text], input[type=password] { width: 100%; box-sizing: border-box; padding: 9px; font-size: 15px; border: 1px solid #ccc; border-radius: 4px; }
+    button { margin-top: 20px; width: 100%; padding: 10px; font-size: 15px; background: #1f6f3f; color: #fff; border: 0; border-radius: 4px; cursor: pointer; }
+    .alert { background: #fde8e8; color: #9b1c1c; padding: 8px 10px; border-radius: 4px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Вход в администрацията</h1>
+    <% if flash[:alert] %><p class="alert"><%= flash[:alert] %></p><% end %>
+    <%= form_tag admin_login_path do %>
+      <label for="username">Потребител</label>
+      <%= text_field_tag :username, params[:username], autocomplete: 'username', autofocus: true %>
+      <label for="password">Парола</label>
+      <%= password_field_tag :password, nil, autocomplete: 'current-password' %>
+      <button type="submit">Вход</button>
+    <% end %>
+  </div>
+</body>
+</html>

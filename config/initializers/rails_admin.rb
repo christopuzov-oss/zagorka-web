@@ -1,10 +1,11 @@
 RailsAdmin.config do |config|
 
   config.authenticate_with do
-    authenticate_or_request_with_http_basic do |username, password|
-      username == Rails.application.config.username && password == Rails.application.config.password
-    end
+    redirect_to main_app.admin_login_path unless session[:admin_ok]
   end
+
+  config.navigation_static_label = 'Акаунт'
+  config.navigation_static_links = { 'Изход' => '/admin-logout' }
 
   config.included_models = %w(  Article 
                                 Article::Translation

@@ -1,3 +1,3 @@
 class CkeditorBaseController < ApplicationController
-  http_basic_authenticate_with name: Rails.application.config.username, password: Rails.application.config.password
+  before_action { head :unauthorized unless session[:admin_ok] }
 end

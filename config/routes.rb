@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get  'admin-login',  to: 'admin_sessions#new',     as: :admin_login
+  post 'admin-login',  to: 'admin_sessions#create'
+  get  'admin-logout', to: 'admin_sessions#destroy', as: :admin_logout
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsAdmin::Engine => '/site_admin', as: 'rails_admin'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
