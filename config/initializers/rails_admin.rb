@@ -4,8 +4,8 @@ RailsAdmin.config do |config|
     redirect_to main_app.admin_login_path unless session[:admin_ok]
   end
 
-  config.navigation_static_label = 'Акаунт'
-  config.navigation_static_links = { 'Изход' => '/admin-logout' }
+  config.navigation_static_label = "Акаунт"
+  config.navigation_static_links = { "Изход" => "/admin-logout" }
 
   config.included_models = %w(  Article 
                                 Article::Translation
