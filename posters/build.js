@@ -290,7 +290,7 @@ function posterB() {
   return `<!doctype html><html lang="bg"><head><meta charset="utf-8">${FONTS}<style>${BASE}
   .p{background:#F6EFE1;color:#6B4A2E}
   .frame{position:absolute;left:36px;top:36px;right:36px;bottom:36px;border:1.5px solid #C9A46A;border-radius:6px;opacity:.7}
-  .title{font-size:118px;color:#B3262E;letter-spacing:.03em}
+  .title{font-size:98px;color:#B3262E}
   .t2{color:#7A5B3A;font-weight:500}
   .bear{position:absolute;left:345px;top:560px;width:390px;filter:url(#wc)}
   .wash{position:absolute;left:250px;top:560px;width:580px;height:500px;border-radius:50%;background:radial-gradient(closest-side,rgba(226,170,150,.38),rgba(226,170,150,.14) 60%,rgba(226,170,150,0));filter:url(#wc)}
