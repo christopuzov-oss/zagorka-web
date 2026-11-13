@@ -8,7 +8,12 @@ const b64 = f => 'data:image/png;base64,' + fs.readFileSync(path.join(OUT, 'asse
 const USYC = b64('usyc.png');
 const AIKO = b64('aiko.png');
 
-const FONTS = `<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">`;
+const TF = process.env.TFONT || 'Pacifico';
+const UPPER = process.env.TUPPER === '1';
+const TSCALE = parseFloat(process.env.TSCALE || '1');
+const TAG = process.env.TAG || '';
+const T1 = UPPER ? 'КОЛЕДЕН' : 'Коледен', T2 = UPPER ? 'КОКТЕЙЛ' : 'коктейл';
+const FONTS = `<link href="https://fonts.googleapis.com/css2?family=${TF.replace(/ /g, '+')}&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">`;
 
 /* ---------- Мечето (viewBox 0 0 400 470) ---------- */
 function bear(p = {}) {
@@ -141,7 +146,7 @@ function stamp({ ring, text, bg = 'none', size = 210, id = 'st' }) {
   <circle r="106" fill="${bg}" stroke="${ring}" stroke-width="2.5"/>
   <circle r="100" fill="none" stroke="${ring}" stroke-width="1" stroke-dasharray="1.5 5" stroke-linecap="round"/>
   <circle r="60" fill="none" stroke="${ring}" stroke-width="1.5"/>
-  <text transform="rotate(-118)" font-family="UNIQA Galano, Montserrat" font-weight="600" font-size="15.5" fill="${text}">
+  <text transform="rotate(-118)" font-family="Nunito" font-weight="800" font-size="15.5" fill="${text}">
     <textPath href="#${id}c" textLength="482" lengthAdjust="spacing">ОПЕРАЦИЯ ПЛЮШЕНО МЕЧЕ · 13.12 ·</textPath></text>
   <!-- мече-икона -->
   <g fill="${text}">
@@ -174,14 +179,14 @@ const GAL = path.join(OUT, 'assets', 'fonts', 'UNIQAGalanoTT-SemiBold.ttf');
 const FACE = fs.existsSync(GAL) ? `@font-face{font-family:'UNIQA Galano';src:url(data:font/ttf;base64,${fs.readFileSync(GAL).toString('base64')});font-weight:100 900}` : '';
 console.log(FACE ? 'font: UNIQA Galano' : 'font: Montserrat (fallback, Galano file missing)');
 const BASE = `${FACE}
-:root{--f:'UNIQA Galano',Montserrat,sans-serif}
+:root{--f:Nunito,sans-serif;--t:'${TF.split(':')[0]}',Nunito,sans-serif}
 
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1080px;height:1350px;overflow:hidden}
 .p{position:relative;width:1080px;height:1350px;overflow:hidden;font-family:var(--f);font-feature-settings:'locl'}
 .abs{position:absolute}
 .c{position:absolute;left:0;width:1080px;text-align:center}
-.title{font-family:var(--f);font-weight:600;line-height:1.02;letter-spacing:.01em}
+.title{font-family:var(--t);font-weight:400;line-height:1.08;letter-spacing:0;transform:scale(${TSCALE});transform-origin:50% 40%}
 .kicker{font-weight:600;letter-spacing:.42em;font-size:22px;text-transform:uppercase}
 .logos{position:absolute;left:0;bottom:0;width:1080px;height:160px;display:flex;align-items:center;justify-content:center;gap:54px}
 .logos .slot{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:250px}
@@ -235,7 +240,7 @@ function posterA() {
   ${flake(120, 640, 86, '#FFF4E2', .95)}${flake(900, 900, 70, '#FFF4E2', .9, 15)}${flake(880, 430, 46, '#F3B9B0', .8)}${flake(215, 930, 44, '#F3B9B0', .8, 20)}
   <div class="c kicker" style="top:176px;font-size:17px;color:#F6D9A8">USYC представя</div>
   <div class="c" style="top:226px"><span style="display:inline-block;padding:9px 26px 9px 34px;border:1.5px solid #E9C46A;border-radius:40px;color:#E9C46A" class="kicker">Благотворителен</span></div>
-  <div class="c title" style="top:296px">КОЛЕДЕН<br>КОКТЕЙЛ</div>
+  <div class="c title" style="top:296px">${T1}<br>${T2}</div>
   <div class="globe"><div class="snow"></div>${dots(46, 5, '#fff', 500, 400, 0, 4).replace('width="1080" height="1350"', 'width="500" height="500"')}</div>
   ${bear({ id: 'a', scarf: '#1F6B4A', scarfDark: '#17523A' })}
   <div class="base"></div>
@@ -314,7 +319,7 @@ function posterB() {
   ${flake(250, 590, 44, '#C9A46A', .7)}${flake(820, 520, 34, '#C9A46A', .6, 20)}
   <div class="c kicker" style="top:236px;font-size:17px;color:#8A6B48">USYC представя</div>
   <div class="c" style="top:272px;font-family:var(--f);font-weight:500;font-size:52px;color:#3E7A5A;letter-spacing:.14em">БЛАГОТВОРИТЕЛЕН</div>
-  <div class="c title" style="top:338px">КОЛЕДЕН<br><span class="t2">КОКТЕЙЛ</span></div>
+  <div class="c title" style="top:338px">${T1}<br><span class="t2">${T2}</span></div>
   <div class="wash"></div>
   ${bear({ id: 'b', fur: '#B98556', furDark: '#9E6C40', furLight: '#E3C097', scarf: '#B3262E', scarfDark: '#8E1C24', shadow: 'rgba(90,50,20,.18)', cap: '#2A2F3A' })}
   ${stamp({ ring: '#B3262E', text: '#B3262E', bg: 'none', id: 'sb', size: 190 }).replace("'#fff'", "'#F6EFE1'")}
@@ -357,7 +362,7 @@ function posterC() {
   ${star(516, 58, 48, '#D9B45F')}
   <div class="c kicker" style="top:128px;font-size:16px;color:#CDBE9E">USYC представя</div>
   <div class="c" style="top:176px"><span class="kicker" style="color:#D9B45F;letter-spacing:.6em;font-size:24px;padding-left:.6em">Благотворителен</span></div>
-  <div class="c title" style="top:232px">КОЛЕДЕН<br>КОКТЕЙЛ</div>
+  <div class="c title" style="top:232px">${T1}<br>${T2}</div>
   <div class="arch ar1"></div><div class="arch ar2"></div>
   <div class="glow"></div>
   ${flake(160, 620, 64, '#D9B45F', .8)}${flake(880, 800, 52, '#D9B45F', .7, 18)}${flake(196, 880, 34, '#F7EBD3', .6, 10)}${flake(868, 340, 30, '#F7EBD3', .5)}
@@ -379,12 +384,12 @@ function posterC() {
   const browser = await chromium.launch();
   const ctx = await browser.newContext({ viewport: { width: 1080, height: 1350 }, deviceScaleFactor: 2 });
   for (const [name, html] of Object.entries(variants)) {
-    const file = path.join(OUT, `poster-${name}.html`);
+    const file = path.join(OUT, `poster-${name}${TAG}.html`);
     fs.writeFileSync(file, html);
     const page = await ctx.newPage();
     await page.goto('file://' + file, { waitUntil: 'networkidle' });
     await page.evaluate(() => document.fonts.ready);
-    await page.screenshot({ path: path.join(OUT, `poster-${name}.png`) });
+    await page.screenshot({ path: path.join(OUT, `poster-${name}${TAG}.png`) });
     await page.close();
     console.log('ok', name);
   }
