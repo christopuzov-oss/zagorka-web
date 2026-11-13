@@ -141,7 +141,7 @@ function stamp({ ring, text, bg = 'none', size = 210, id = 'st' }) {
   <circle r="106" fill="${bg}" stroke="${ring}" stroke-width="2.5"/>
   <circle r="100" fill="none" stroke="${ring}" stroke-width="1" stroke-dasharray="1.5 5" stroke-linecap="round"/>
   <circle r="60" fill="none" stroke="${ring}" stroke-width="1.5"/>
-  <text transform="rotate(-118)" font-family="Montserrat" font-weight="700" font-size="15.5" fill="${text}">
+  <text transform="rotate(-118)" font-family="UNIQA Galano, Montserrat" font-weight="600" font-size="15.5" fill="${text}">
     <textPath href="#${id}c" textLength="482" lengthAdjust="spacing">ОПЕРАЦИЯ ПЛЮШЕНО МЕЧЕ · 13.12 ·</textPath></text>
   <!-- мече-икона -->
   <g fill="${text}">
@@ -170,20 +170,25 @@ function logos(fg, sub) {
 </div>`;
 }
 
-const BASE = `
+const GAL = path.join(OUT, 'assets', 'fonts', 'UNIQAGalanoTT-SemiBold.ttf');
+const FACE = fs.existsSync(GAL) ? `@font-face{font-family:'UNIQA Galano';src:url(data:font/ttf;base64,${fs.readFileSync(GAL).toString('base64')});font-weight:100 900}` : '';
+console.log(FACE ? 'font: UNIQA Galano' : 'font: Montserrat (fallback, Galano file missing)');
+const BASE = `${FACE}
+:root{--f:'UNIQA Galano',Montserrat,sans-serif}
+
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1080px;height:1350px;overflow:hidden}
-.p{position:relative;width:1080px;height:1350px;overflow:hidden;font-family:Montserrat,sans-serif}
+.p{position:relative;width:1080px;height:1350px;overflow:hidden;font-family:var(--f);font-feature-settings:'locl'}
 .abs{position:absolute}
 .c{position:absolute;left:0;width:1080px;text-align:center}
-.title{font-family:'Playfair Display',serif;font-weight:700;line-height:.98;letter-spacing:.035em}
+.title{font-family:var(--f);font-weight:600;line-height:1.02;letter-spacing:.01em}
 .kicker{font-weight:600;letter-spacing:.42em;font-size:22px;text-transform:uppercase}
 .logos{position:absolute;left:0;bottom:0;width:1080px;height:160px;display:flex;align-items:center;justify-content:center;gap:54px}
 .logos .slot{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:250px}
 .logos .sep{width:1.5px;height:76px;background:currentColor;opacity:.25}
 .fnd{text-align:center}
 .fnd .f1{font-size:12.5px;font-weight:700;letter-spacing:.42em;margin-bottom:6px}
-.fnd .f2{font-family:'Playfair Display',serif;font-weight:600;font-size:25px;line-height:1.12}
+.fnd .f2{font-family:var(--f);font-weight:600;font-size:25px;line-height:1.12}
 .grain{position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.5}
 `;
 const GRAIN = (f = .8, a = .5) => `<svg class="grain" width="1080" height="1350"><filter id="pg"><feTurbulence type="fractalNoise" baseFrequency="${f}" numOctaves="3" seed="3"/><feColorMatrix type="matrix" values="0 0 0 0 .35  0 0 0 0 .25  0 0 0 0 .2  0 0 0 ${a} 0"/></filter><rect width="100%" height="100%" filter="url(#pg)"/></svg>`;
@@ -218,9 +223,9 @@ function posterA() {
   .pill{position:absolute;left:190px;top:1068px;width:700px;height:86px;border-radius:44px;
     background:repeating-linear-gradient(-45deg,#B3262E 0 12px,#FFF4E2 12px 24px,#2E7B57 24px 36px,#FFF4E2 36px 48px);padding:7px;box-shadow:0 10px 18px rgba(30,0,0,.35)}
   .pill div{height:100%;border-radius:38px;background:#8E1C28;display:flex;align-items:center;justify-content:center;
-    font-family:'Playfair Display',serif;font-weight:600;font-size:36px;letter-spacing:.06em;color:#FFF4E2}
+    font-family:var(--f);font-weight:600;font-size:36px;letter-spacing:.06em;color:#FFF4E2}
   .cause{top:1166px;color:#6B1420;font-size:17.5px;font-weight:600;letter-spacing:.04em;line-height:1.5}
-  .cause b{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:22px;letter-spacing:0}
+  .cause b{font-family:var(--f);font-weight:600;font-size:22px;letter-spacing:0}
   .logos{height:122px;color:#6B1420}
   </style></head><body><div class="p">
   <div class="arch a1"></div><div class="arch a2"></div><div class="arch a3"></div>
@@ -287,9 +292,9 @@ function posterB() {
   .stamp{position:absolute;left:748px;top:600px;transform:rotate(12deg);opacity:.92}
   .date{top:1052px;display:flex;align-items:center;justify-content:center;gap:26px;left:110px;width:860px}
   .date i{flex:1;height:2px;background:#B3262E}
-  .date span{font-family:'Playfair Display',serif;font-weight:600;font-size:38px;letter-spacing:.06em;color:#3E7A5A;white-space:nowrap}
+  .date span{font-family:var(--f);font-weight:600;font-size:38px;letter-spacing:.06em;color:#3E7A5A;white-space:nowrap}
   .cause{top:1118px;font-size:17.5px;font-weight:500;letter-spacing:.04em;color:#7A4A3A}
-  .cause b{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:27px;color:#B3262E;letter-spacing:0}
+  .cause b{font-family:var(--f);font-weight:600;font-size:27px;color:#B3262E;letter-spacing:0}
   .logos{bottom:44px;height:130px;color:#6B4A2E}
   </style></head><body><div class="p">
   <svg width="0" height="0" style="position:absolute"><filter id="wc" x="-5%" y="-5%" width="110%" height="110%">
@@ -308,7 +313,7 @@ function posterB() {
   ${gift(70, 900, 120, 84, '#DDE6D5', '#3E7A5A')}
   ${flake(250, 590, 44, '#C9A46A', .7)}${flake(820, 520, 34, '#C9A46A', .6, 20)}
   <div class="c kicker" style="top:236px;font-size:17px;color:#8A6B48">USYC представя</div>
-  <div class="c" style="top:272px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:52px;color:#3E7A5A;letter-spacing:.14em">БЛАГОТВОРИТЕЛЕН</div>
+  <div class="c" style="top:272px;font-family:var(--f);font-weight:500;font-size:52px;color:#3E7A5A;letter-spacing:.14em">БЛАГОТВОРИТЕЛЕН</div>
   <div class="c title" style="top:338px">КОЛЕДЕН<br><span class="t2">КОКТЕЙЛ</span></div>
   <div class="wash"></div>
   ${bear({ id: 'b', fur: '#B98556', furDark: '#9E6C40', furLight: '#E3C097', scarf: '#B3262E', scarfDark: '#8E1C24', shadow: 'rgba(90,50,20,.18)', cap: '#2A2F3A' })}
@@ -331,11 +336,11 @@ function posterC() {
   .glow{position:absolute;left:290px;top:560px;width:500px;height:500px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,214,140,.42),rgba(255,214,140,0))}
   .title{font-size:122px;font-weight:600;letter-spacing:.05em;
     background:linear-gradient(180deg,#FFF6E2 20%,#E9CD8B 100%);-webkit-background-clip:text;color:transparent}
-  .script{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:58px;color:#D9B45F;letter-spacing:.02em}
+  .script{font-family:var(--f);font-weight:500;font-size:58px;color:#D9B45F;letter-spacing:.02em}
   .bear{position:absolute;left:350px;top:612px;width:380px}
   .floor{position:absolute;left:250px;top:1030px;width:580px;height:52px;background:radial-gradient(ellipse at 50% 0,rgba(0,0,0,.45),rgba(0,0,0,0) 70%)}
   .stamp{position:absolute;left:770px;top:500px;transform:rotate(13deg)}
-  .date{top:1092px;font-family:'Playfair Display',serif;font-size:38px;font-weight:500;letter-spacing:.1em;color:#F7EBD3}
+  .date{top:1092px;font-family:var(--f);font-size:38px;font-weight:500;letter-spacing:.1em;color:#F7EBD3}
   .rule{position:absolute;top:1117px;height:1.5px;width:150px;background:linear-gradient(90deg,transparent,#D9B45F)}
   .cause{top:1151px;font-size:16.5px;font-weight:500;letter-spacing:.07em;color:#CDBE9E}
   .cause b{color:#E9CD8B;font-weight:600}
